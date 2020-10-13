@@ -1,0 +1,12 @@
+.logo {
+  height: 80%;
+  margin-top: 10px;
+}
+
+.logo img {
+  padding: 5px;
+  width: 80px;
+  background-color: white;
+  box-sizing: border-box;
+  border-radius: 5px;
+}

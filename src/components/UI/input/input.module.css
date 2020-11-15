@@ -1,0 +1,37 @@
+.input {
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.container {
+  outline: none;
+  border: 1px solid #ccc;
+  background-color: white;
+  font: inherit;
+  padding: 6px 10px;
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.container:focus {
+  outline: none;
+  background-color: #ccc;
+}
+
+.invalid {
+  border: 1px solid red;
+  background-color: rgb(206, 141, 134);
+}
+
+.invalid:focus {
+  outline: none;
+  border: none;
+}

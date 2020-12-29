@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
+import { connect } from "react-redux";
+
 import "./contact-data.styles.css";
 import Button from "../../../components/UI/button/button.component";
 import Spinner from "../../../components/UI/spinner/spinner.component";
@@ -102,7 +104,7 @@ class ContactData extends Component {
       ].value;
     }
     const order = {
-      ingredients: this.props.ingredients,
+      ingredients: this.props.ings,
       price: this.props.price,
       orderData: formData,
     };
@@ -110,6 +112,8 @@ class ContactData extends Component {
       .post("https://reactjs-burger-prince.firebaseio.com/orders.json", order)
       .then((res) => {
         this.setState({ loading: false });
+        alert("Your order was successfully placed!");
+        this.props.history.replace("/");
       })
       .catch((error) => {
         this.setState({
@@ -197,4 +201,9 @@ class ContactData extends Component {
   }
 }
 
-export default ContactData;
+const mapStateToProps = (state) => ({
+  ings: state.ingredients,
+  price: state.totalPrice,
+});
+
+export default connect(mapStateToProps)(ContactData);

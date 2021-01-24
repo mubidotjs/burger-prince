@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { Redirect } from "react-router-dom";
 
 import "./contact-data.styles.css";
 import Button from "../../../components/UI/button/button.component";
@@ -155,6 +156,7 @@ class ContactData extends Component {
   };
 
   render() {
+    const purchasedRedirect = this.props.purchased ? <Redirect to="/" /> : null;
     const formElementsArray = [];
     for (let key in this.state.orderForm) {
       formElementsArray.push({ id: key, config: this.state.orderForm[key] });
@@ -183,6 +185,7 @@ class ContactData extends Component {
     }
     return (
       <div className="contact-data">
+        {purchasedRedirect}
         <h3>Enter you Contact Data</h3>
         {form}
       </div>
@@ -194,6 +197,7 @@ const mapStateToProps = (state) => ({
   ings: state.burgerBuilder.ingredients,
   price: state.burgerBuilder.totalPrice,
   loading: state.order.loading,
+  purchased: state.order.purchased,
 });
 
 const mapDispatchToProps = (dispatch) => ({

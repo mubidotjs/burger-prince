@@ -28,7 +28,7 @@ export const purchaseBurger = (orderData) => {
         axios
         .post("https://reactjs-burger-prince.firebaseio.com/orders.json", orderData)
         .then((res) => {
-            console.log(res.data);
+            alert("Your order has been placed successfully!")
             disptach(purchaseBurgerSuccess(res.data.name, orderData))
         })
         .catch((error) => {

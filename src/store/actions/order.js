@@ -22,11 +22,11 @@ export const purchaseBurgerStart = () => {
     }
 }
 
-export const purchaseBurger = (orderData) => {
+export const purchaseBurger = (orderData, token) => {
     return disptach => {
         disptach(purchaseBurgerStart());
         axios
-        .post("https://reactjs-burger-prince.firebaseio.com/orders.json", orderData)
+        .post("https://reactjs-burger-prince.firebaseio.com/orders.json?auth=" + token, orderData)
         .then((res) => {
             alert("Your order has been placed successfully!")
             disptach(purchaseBurgerSuccess(res.data.name, orderData))
@@ -63,11 +63,12 @@ export const fetchOrderStart = () => {
     }
 }
 
-export const fetchOrders = () => {
+export const fetchOrders = (token, userId) => {
     return dispatch => {
         dispatch(fetchOrderStart())
+        const queryParams = '?auth=' + token + '&orderBy="userId"&equalTo="' + userId + '"';
         axios
-        .get("https://reactjs-burger-prince.firebaseio.com/orders.json")
+        .get("https://reactjs-burger-prince.firebaseio.com/orders.json" + queryParams)
         .then((res) => {
             const fetchedOrders = [];
             for (let key in res.data) {
@@ -77,6 +78,7 @@ export const fetchOrders = () => {
         })
         .catch((error) => {
             dispatch(fetchOrdersFail(error));
+            alert(error.response.data.error);
         });
     }
 }

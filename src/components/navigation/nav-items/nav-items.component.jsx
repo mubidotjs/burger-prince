@@ -11,7 +11,16 @@ const NavItems = (props) => {
         </NavItem>
       </div>
       <div className="items">
-        <NavItem link="/orders">Orders</NavItem>
+        {props.isAuthenticated ? (
+          <NavItem link="/orders">Orders</NavItem>
+        ) : null}
+      </div>
+      <div>
+        {!props.isAuthenticated ? (
+          <NavItem link="/auth">Authentication</NavItem>
+        ) : (
+          <NavItem link="/logout">Logout</NavItem>
+        )}
       </div>
     </ul>
   );

@@ -1,8 +1,12 @@
 .order {
   width: 80%;
   border: 1px solid #eee;
-  box-shadow: 0 2px 3px #ccc;
+  box-shadow: 0 2px 3px rgba(112, 111, 111, 0.575);
   padding: 10px;
   margin: 10px auto;
   box-sizing: border-box;
+}
+
+table > tr > td {
+  padding: 10px;
 }

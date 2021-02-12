@@ -8,7 +8,8 @@ import OrderSummary from "../../components/burger/order-summary/order-summary.co
 import Spinner from "../../components/UI/spinner/spinner.component";
 import WithErrorHandler from "../../hoc/with-error-handler/with-error-handler.component";
 import * as actions from "../../store/actions/index";
-class BurgerBuilder extends Component {
+
+export class BurgerBuilder extends Component {
   state = {
     purchasing: false,
   };
